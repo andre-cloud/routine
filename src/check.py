@@ -7,7 +7,7 @@ from os.path import isfile, join, isdir, split
 
 def check_folder(input_file):
 
-    output = [f for f in listdir(getcwd()) if isfile(join(getcwd(), f)) and str(f).endswith('out')]
+    output = [f for f in listdir(getcwd()) if isfile(join(getcwd(), f)) and (str(f).endswith('out') or str(f).endswith('log'))]
 
     if not output:
         return False
