@@ -80,7 +80,7 @@ def write_job_file(input_file, calculation, calc_cmd, slurm_cmd, test=False):
 
     ext = 'out' if calculation != 'gaussian' else 'log'
     cm = calc_cmd + (
-        f' > $SLURM_SUBMIT_DIR/{input_file_no_extention}.{ext}' if calculation in ['orca', 'gaussian'] else  f' > $SLURM_SUBMIT_DIR/{input_file_no_extention}.out 2> $SLURM_SUBMIT_DIR/{input_file_no_extention}.error')
+        f' > $SLURM_SUBMIT_DIR/{input_file_no_extention}.{ext}' if calculation in ['orca'] else '' if calculation in ['gaussian'] else  f' > $SLURM_SUBMIT_DIR/{input_file_no_extention}.out 2> $SLURM_SUBMIT_DIR/{input_file_no_extention}.error')
 
     cmd_not_prog = ' '.join(cm.split()[1:])
 
