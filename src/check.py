@@ -2,16 +2,14 @@
 
 
 import re
-from os import listdir, getcwd, getlogin, mkdir, system
+from os import listdir, getcwd, mkdir, system
 from os.path import isfile, join, isdir, split
-
-DEBUG = getlogin() == 'andrea'
 
 def check_folder(input_file):
 
     output = [f for f in listdir(getcwd()) if isfile(join(getcwd(), f)) and str(f).endswith('out')]
 
-    if not output and DEBUG:
+    if not output:
         return
 
     print('Output file(s) are present in this folder. Use one folder for one calculation.')
