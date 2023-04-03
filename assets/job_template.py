@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/data/bin/python_env/bin/python
 
 
 template = '''#!/bin/bash
@@ -68,7 +68,6 @@ sed -n "/$SLURM_JOB_ID/!p" /data/jobs/running.log > /data/jobs/running.log_tmp &
 rm *.slurm
 
 {creating_qm_all}
-
 
 # COPY BACK THE CALCULATION AND REMOVE THE SCRATCH FOLDER
 cd $SLURM_SUBMIT_DIR
