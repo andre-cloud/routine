@@ -67,12 +67,11 @@ sed -n "/$SLURM_JOB_ID/!p" /data/jobs/running.log > /data/jobs/running.log_tmp &
 
 rm *.slurm
 
-{creating_qm_all}
-
 # COPY BACK THE CALCULATION AND REMOVE THE SCRATCH FOLDER
 cd $SLURM_SUBMIT_DIR
 rsync -av --no-p --no-g --chmod=ugo=rwX --exclude '*.tmp' $SCRATCH_DIR/* ./ && rm -fr $SCRATCH_DIR
 
+{creating_qm_all}
 
 {update_README}
 
