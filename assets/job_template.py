@@ -46,8 +46,7 @@ source /data/bin/python_env/bin/activate
 ## CREATE THE ORIGINAL'S FOLDER
 mkdir .originals
 cp * .originals
-rm .originals/README.md
-rm .originals/*slurm .originals/*sh
+rm .originals/README.md .originals/*slurm .originals/*sh
 
 ## COPYING THE FILES OF THE DIRECTORY IN THE SCRATCH
 cp -v -r $SLURM_SUBMIT_DIR/* $SCRATCH_DIR
@@ -72,7 +71,7 @@ rm *.slurm
 
 
 # COPY BACK THE CALCULATION AND REMOVE THE SCRATCH FOLDER
-
+cd $SLURM_SUBMIT_DIR
 rsync -av --no-p --no-g --chmod=ugo=rwX --exclude '*.tmp' $SCRATCH_DIR/* ./ && rm -fr $SCRATCH_DIR
 
 
