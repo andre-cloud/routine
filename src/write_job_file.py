@@ -39,14 +39,14 @@ qm_all_files = {
 
 def create_qm_all(calculation, input_file_no_extention):
     cmd = f'ext=({qm_all_files[calculation]})'
-    cmd += '''
+    cmd += f'''
 mkdir qm_all
 mv *.* qm_all/
 
-for i in ${ext[@]}; do 
+for i in ${"ext[@]"}; do 
 	cp {input_file_no_extention}.$i .
 done
-'''.format(input_file_no_extention=input_file_no_extention)
+'''
     
     return cmd 
 
