@@ -18,7 +18,9 @@ def main():
     
     write_job_file(input_file, calculation, calc_cmd, slurm_cmd)
 
-        
+    
+
+
 
 
 
