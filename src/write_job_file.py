@@ -45,7 +45,7 @@ mv *.* qm_all/
 
 for i in ${"{ext[@]}"}; do 
     if [[ -e {input_file_no_extention}.$i ]]; then
-	    cp -v qm_all/{input_file_no_extention}.$i .;
+	    cp -v $SLURM_SUBMIT_DIR/qm_all/{input_file_no_extention}.$i $SLURM_SUBMIT_DIR;
     fi
 done
 '''
