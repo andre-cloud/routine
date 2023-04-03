@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 
-
-import cclib, re, sys
+import cclib
+import re, sys
 import numpy as np
 from scipy.constants import physical_constants as ph
 
