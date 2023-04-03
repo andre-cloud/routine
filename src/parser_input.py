@@ -13,8 +13,8 @@ def is_slurm(k):
 def parse_args():
 
     parser = argparse.ArgumentParser()
-    parser.add_argument('file')
     parser.add_argument('calc', choices=['orca', 'crest', 'censo', 'gaussian', 'xtb'])
+    parser.add_argument('file')
 
     args, unknown = parser.parse_known_args()
     if not check_input(args.file):
