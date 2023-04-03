@@ -1,0 +1,5 @@
+tests
+.DS_Store
+__pycache__
+job-slurm.sh
+README.md
