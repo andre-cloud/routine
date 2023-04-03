@@ -32,9 +32,9 @@ def get_possible_versions(calculation, version, test=False):
 qm_all_files = {
     'orca': 'inp xyz interp out hess final.interp',
     'gaussian': 'gjf out log',
-    'censo': 'xyz',
-    'xtb': 'xyz', 
-    'crest': 'xyz',
+    'censo': 'xyz out',
+    'xtb': 'xyz out', 
+    'crest': 'xyz out',
 }
 
 def create_qm_all(calculation, input_file_no_extention):
@@ -99,7 +99,7 @@ def write_job_file(input_file, calculation, calc_cmd, slurm_cmd, test=False):
             launcher = launchers[calculation],
             command_line_no_prog = cmd_not_prog, 
             creating_qm_all = create_qm_all(calculation, input_file_no_extention), 
-            update_README = f'update_readme.py {calculation} {input_file_no_extention}.{ext}',
+            update_README = f'update_readme.py {calculation} {input_file_no_extention if calculation not i in ["orca", "gaussian"] else calculation}.{ext}',
             SMTP = SMTP_SERVER_IP, 
             email = email_address,
         ))
