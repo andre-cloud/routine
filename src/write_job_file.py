@@ -43,7 +43,7 @@ def create_qm_all(calculation, input_file_no_extention):
 mkdir qm_all
 mv *.* qm_all/
 
-for i in ${"ext[@]"}; do 
+for i in ${"{ext[@]}"}; do 
 	cp {input_file_no_extention}.$i .
 done
 '''
