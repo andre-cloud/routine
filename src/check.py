@@ -23,7 +23,7 @@ def check_folder(input_file):
 
     mkdir(join(root, n_dir))
     system(f'cp .originals/* ../{n_dir}')
-    system(f'{input_file} ../{n_dir}')
+    system(f'cp {input_file} ../{n_dir}')
     system(f'cp .originals/{input_file} .')
 
     return True
