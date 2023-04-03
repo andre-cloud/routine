@@ -2,7 +2,7 @@
 
 
 template = '''#!/bin/bash
-#SBATCH --job-name=o-{input_file}
+#SBATCH --job-name={abr}-{input_file}
 #SBATCH --nodes=1-1
 #SBATCH --time=8760:00:00
 #SBATCH --error="err-%j-%N.slurm"

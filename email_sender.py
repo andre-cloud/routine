@@ -3,10 +3,10 @@
 import os, sys
 import smtplib
 
-from src.defaults import SMTP_SERVER_IP, DEFAULT_MAIL
+from src.defaults import SMTP_SERVER_IP
 
 SMTP = SMTP_SERVER_IP
-sender = DEFAULT_MAIL
+sender = 'slurm@righi.lab'
 
 
 def send_mail(mail, jobid):

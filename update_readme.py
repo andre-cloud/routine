@@ -17,7 +17,10 @@ def tail(fname, rows):
 
 def orca_parser(output):
 
-    data = cclib.io.ccread(output)
+    try:
+        data = cclib.io.ccread(output)
+    except Exception:
+        pass
 
     with open(output) as f:
         fl = f.read()
@@ -85,7 +88,10 @@ def xtb_parser(output):
 
 def gaussian_parser(output):
 
-    data = cclib.io.ccread(output)
+    try:
+        data = cclib.io.ccread(output)
+    except Exception:
+        pass
 
     with open(output) as f:
         fl = f.read()
