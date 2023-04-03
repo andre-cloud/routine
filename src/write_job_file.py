@@ -44,7 +44,9 @@ mkdir qm_all
 mv *.* qm_all/
 
 for i in ${"{ext[@]}"}; do 
-	cp {input_file_no_extention}.$i .
+    if [[ -e {input_file_no_extention}.$i ]]; then
+	    cp qm_all/{input_file_no_extention}.$i .;
+    fi
 done
 '''
     
