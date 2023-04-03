@@ -1,0 +1,31 @@
+#!/data/bin/python_env/bin/python
+
+import os, sys
+import smtplib
+
+SMTP = '192.168.114.75:8025'
+sender = 'slurm@righi.lab'
+
+
+def send_mail(mail, jobid):
+    try:
+        with open('README.md') as f:
+            text = f.read()
+
+        text = f'''From: SLURM <{sender}>
+Subject: Calculation of {jobid}
+
+{text}
+        '''
+
+        smtpObj = smtplib.SMTP(SMTP)
+        smtpObj.sendmail(sender, mail, text)
+        print('Mail correctly sent')
+
+    except smtplib.SMTPException:
+        print('Mail correctly sent')
+
+if __name__=='__main__':
+    mail, jobid = sys.argv[1:]
+    send_mail(mail, jobid)
+
