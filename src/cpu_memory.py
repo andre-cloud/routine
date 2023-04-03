@@ -49,7 +49,7 @@ def get_gaussian_prm(input, calc_commands):
     maxcore = re.search('%( ){0,}mem=( ){0,}[1-9][0-9]{0,}[a-z]{0,2}', fl.lower())
     if maxcore:
         pre=PREFIX[re.search('[a-z]{2}$', maxcore[0])[0][0]]
-        maxcore = str(int(re.search('[1-9][0-9]{0,}', maxcore[0])[0])*pre/int(pal))
+        maxcore = str(int(int(re.search('[1-9][0-9]{0,}', maxcore[0])[0])*pre/int(pal)))
     else: 
         maxcore = "1000"
 
@@ -62,7 +62,7 @@ def get_crest_prm(input, calc_commands):
 
     pal = [c[idx+1] for idx, i in enumerate(c) if i.startswith('-') and i.lower().endswith('t')][0]
 
-    maxcore = str(22000/float(pal))
+    maxcore = str(int(22000/float(pal)))
 
     return pal, maxcore
 
@@ -90,7 +90,7 @@ def get_censo_prm(input, calc_commands, test=None):
     o = re.search('[0-9]{1,3}', re.search('omp( ){0,}:( ){0,}[0-9]{1,4}', fl)[0])[0]
     p = re.search('[0-9]{1,3}', re.search('maxthreads( ){0,}:( ){0,}[0-9]{1,4}', fl)[0])[0]
 
-    return str(int(o)*int(p)), str(maxcore)
+    return str(int(o)*int(p)), str(int(maxcore))
 
 
 
@@ -100,18 +100,18 @@ def get_xtb_prm(input, calc_commands):
 
     pal = [c[idx+1] for idx, i in enumerate(c) if i.startswith('-') and i.lower().endswith('p')][0]
 
-    maxcore = str(22000/float(pal))
+    maxcore = str(int(22000/float(pal)))
 
     return pal, maxcore
 
 
 if __name__ == '__main__':
-    print(get_orca_prm('tests/orca_pal.inp'))
-    print(get_orca_prm('tests/orca_procs.inp'))
+    print(get_orca_prm('tests/orca_pal.inp', None))
+    print(get_orca_prm('tests/orca_procs.inp', None))
     
-    print(get_gaussian_prm('tests/gaussian.gjf'))
+    print(get_gaussian_prm('tests/gaussian.gjf', None))
 
-    print(get_crest_prm('--nci --T 44 --cluster 30 --alpb toluene'))
-    print(get_xtb_prm('--opt -P 4 --input input'))
+    print(get_crest_prm(None, '--nci --T 44 --cluster 30 --alpb toluene'))
+    print(get_xtb_prm(None, '--opt -P 4 --input input'))
 
-    print(get_censo_prm('-inp ensemble.xyz -solvent toluene', True))
+    print(get_censo_prm(None, '-inp ensemble.xyz -solvent toluene', True))
