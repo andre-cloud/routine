@@ -78,7 +78,7 @@ rsync -av --no-p --no-g --chmod=ugo=rwX --exclude '*.tmp' $SCRATCH_DIR/* ./ && r
 
 # SEND NOTIFICATION EMAIL
 
-send_mail.py {email} $SLURM_JOB_ID
+email_sender.py {email} $SLURM_JOB_ID
 
 deactivate
 '''
