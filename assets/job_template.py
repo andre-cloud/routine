@@ -38,6 +38,8 @@ do
         ssh $node mkdir -p $SCRATCH_DIR
 done
 
+source /data/bin/python_env/bin/activate
+
 
 # SETTING THE FOLDER FOR THE CALCULATION
 
@@ -79,5 +81,8 @@ rsync -av --no-p --no-g --chmod=ugo=rwX --exclude '*.tmp' $SCRATCH_DIR/* ./ && r
 
 # SEND NOTIFICATION EMAIL
 
-cat README.md | mail -S smtp={SMTP} -r "slurm@righi.lab" -s "Calculation INFO" {email}
+cat $SLURM_SUBMIT_DIR/README.md | mail -S smtp={SMTP} -r "slurm@righi.lab" -s "Calculation INFO" {email}
+
+deactivate
+
 '''
