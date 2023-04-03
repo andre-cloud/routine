@@ -76,11 +76,11 @@ rsync -av --no-p --no-g --chmod=ugo=rwX --exclude '*.tmp' $SCRATCH_DIR/* ./ && r
 
 {update_README}
 
+deactivate
 
 # SEND NOTIFICATION EMAIL
 
-cat $SLURM_SUBMIT_DIR/README.md | mail -S smtp={SMTP} -r "slurm@righi.lab" -s "Calculation INFO" {email}
+cat README.md | mail -S smtp={SMTP} -r "slurm@righi.lab" -s "Calculation INFO" {email}
 
-deactivate
 
 '''
