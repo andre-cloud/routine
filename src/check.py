@@ -10,7 +10,7 @@ def check_folder(input_file):
     output = [f for f in listdir(getcwd()) if isfile(join(getcwd(), f)) and str(f).endswith('out')]
 
     if not output:
-        return
+        return False
 
     print('Output file(s) are present in this folder. Use one folder for one calculation.')
 
@@ -26,4 +26,5 @@ def check_folder(input_file):
     system(f'{input_file} ../{n_dir}')
     system(f'cp .originals/{input_file} .')
 
+    return True
 

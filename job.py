@@ -11,7 +11,8 @@ def main():
     
     input_file, calculation, calc_cmd, slurm_cmd = parse_args()
 
-    check_folder(input_file)
+    if check_folder(input_file):
+        return
 
     write_md(calculation, input_file, calc_cmd)
     
