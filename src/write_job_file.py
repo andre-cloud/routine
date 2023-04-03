@@ -37,16 +37,16 @@ qm_all_files = {
     'crest': 'xyz',
 }
 
-def create_qm_all(calculation):
+def create_qm_all(calculation, input_file_no_extention):
     cmd = f'ext=({qm_all_files[calculation]})'
     cmd += '''
 mkdir qm_all
 mv *.* qm_all/
 
 for i in ${ext[@]}; do 
-	cp $fname"."$i .
+	cp {input_file_no_extention}.$i .
 done
-'''
+'''.format(input_file_no_extention=input_file_no_extention)
     
     return cmd 
 
@@ -95,7 +95,7 @@ def write_job_file(input_file, calculation, calc_cmd, slurm_cmd, test=False):
             calculation = calculation, 
             launcher = launchers[calculation],
             command_line_no_prog = cmd_not_prog, 
-            creating_qm_all = create_qm_all(calculation), 
+            creating_qm_all = create_qm_all(calculation, input_file_no_extention), 
             update_README = f'update_readme.py {calculation} {input_file_no_extention}.{ext}',
             SMTP = SMTP_SERVER_IP, 
             email = email_address,
