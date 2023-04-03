@@ -60,7 +60,7 @@ echo "$SLURM_JOB_ID - $SLURM_SUBMIT_DIR/{output_file} - {calculation}" >> /data/
 
 # RUNNING THE CALCULATION
 
-$(which {w_cal}) {command_line_no_prog}
+{launcher} {command_line_no_prog}
 
 ## REMOVING FROM RUNNING LOG FILE
 sed -n "/$SLURM_JOB_ID/!p" /data/jobs/running.log > /data/jobs/running.log_tmp && mv /data/jobs/running.log_tmp /data/jobs/running.log

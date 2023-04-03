@@ -51,6 +51,15 @@ done
     return cmd 
 
 
+launchers = {
+    'orca': '$(which orca)',
+    'gaussian': 'g16',
+    'censo': 'censo',
+    'crest': 'crest',
+    'xtb': 'xtb'
+}
+
+
 def write_job_file(input_file, calculation, calc_cmd, slurm_cmd, test=False):
     """
     
@@ -80,7 +89,7 @@ def write_job_file(input_file, calculation, calc_cmd, slurm_cmd, test=False):
             input_file = input_file_no_extention,
             output_file = f'{input_file_no_extention}.out',
             calculation = calculation, 
-            w_cal = calculation if calculation != "gaussian" else 'g16',
+            launcer = launchers[calculation],
             command_line_no_prog = cmd_not_prog, 
             creating_qm_all = create_qm_all(calculation), 
             update_README = f'update_readme.py {calculation} {input_file_no_extention}.out',
