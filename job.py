@@ -1,7 +1,6 @@
-
 #!/usr/bin/python3
 
-
+import os
 
 from src.parser_input import parse_args
 from src.write_job_file import write_job_file
@@ -18,23 +17,11 @@ def main():
     
     write_job_file(input_file, calculation, calc_cmd, slurm_cmd)
 
+    print("Take your time to edit the README.md file to explain the purpose of this calculation")
+    os.system('sbatch job-slurm.sh')
     
-
-
-
-
-
-
 
 if __name__ == '__main__':
 
-    # main()
-
-    write_job_file(
-        'tests/orca_procs.inp', 
-        'orca',
-        'orca tests/orca_procs.inp',
-        {'mail-user': 'AP_tgram@mailrise.xyz', 'mail-type': 'NONE', 'exclude': 'motoro', 'nodelist': 'motoro', 'nodes-list': 'mume', 'ntasks': '44', 'mem-per-cpu': '1000'}, test=True
-        )
-
+    main()
 

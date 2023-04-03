@@ -1,26 +1,7 @@
 #!/usr/bin/python3
 
 
-'''
-if [ -e *out ]; then
-        echo "Output file(s) are present in this folder. Create one folder for one calculation."
-
-        dir_n=${PWD##*/}
-        dir_n=${dir_n%.*}
-        n=$(ls -d ../$(echo $dir_n)* | wc -l)
-        new_dir=$(echo $dir_n).$(echo $n)
-        echo "Creating ../$new_dir with input files stored in .originals/ and the new modified input"
-
-        mkdir ../$new_dir
-        cp .originals/* ../$new_dir
-        cp $jobfile ../$new_dir
-        cp .originals/$jobfile .
-        if [ -e ../$new_dir/README.md ]; then rm ../$new_dir/README.md; fi
-        exit
-fi
-'''
-
-import re, shutil
+import re
 from os import listdir, getcwd, getlogin, mkdir, system
 from os.path import isfile, join, isdir, split
 
