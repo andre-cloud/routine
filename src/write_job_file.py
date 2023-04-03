@@ -75,10 +75,13 @@ def write_job_file(input_file, calculation, calc_cmd, slurm_cmd, test=False):
     
     email_address = slurm_cmd.pop('mail-user', DEFAULT_MAIL)
     input_file_no_extention = os.path.splitext(input_file)[0]
+
+    ext = 'out' if calculation != 'gaussian' else 'log'
     cm = calc_cmd + (
-        f' > $SLURM_SUBMIT_DIR/{input_file_no_extention}.out' if calculation in ['orca', 'gaussian'] else  f' > $SLURM_SUBMIT_DIR/{input_file_no_extention}.out 2> $SLURM_SUBMIT_DIR/{input_file_no_extention}.error')
+        f' > $SLURM_SUBMIT_DIR/{input_file_no_extention}.{ext}' if calculation in ['orca', 'gaussian'] else  f' > $SLURM_SUBMIT_DIR/{input_file_no_extention}.out 2> $SLURM_SUBMIT_DIR/{input_file_no_extention}.error')
 
     cmd_not_prog = ' '.join(cm.split()[1:])
+
 
     with open('job-slurm.sh', 'w') as f:
         f.write(job_template.format(
@@ -87,12 +90,12 @@ def write_job_file(input_file, calculation, calc_cmd, slurm_cmd, test=False):
             command_line = cm,
             date = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"), 
             input_file = input_file_no_extention,
-            output_file = f'{input_file_no_extention}.out',
+            output_file = f'{input_file_no_extention}.{ext}',
             calculation = calculation, 
             launcher = launchers[calculation],
             command_line_no_prog = cmd_not_prog, 
             creating_qm_all = create_qm_all(calculation), 
-            update_README = f'update_readme.py {calculation} {input_file_no_extention}.out',
+            update_README = f'update_readme.py {calculation} {input_file_no_extention}.{ext}',
             SMTP = SMTP_SERVER_IP, 
             email = email_address,
         ))
