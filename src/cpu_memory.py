@@ -9,7 +9,7 @@ PREFIX = {
     'g' : 1e3
 }
 
-def get_orca_prm(input):
+def get_orca_prm(input, calc_commands):
 
     with open(input) as f:
         fl = f.read()
@@ -35,7 +35,7 @@ def get_orca_prm(input):
     return pal, maxcore
 
 
-def get_gaussian_prm(input):
+def get_gaussian_prm(input, calc_commands):
 
     with open(input) as f:
         fl = f.read()
@@ -56,7 +56,7 @@ def get_gaussian_prm(input):
     return pal, maxcore
 
 
-def get_crest_prm(calc_commands):
+def get_crest_prm(input, calc_commands):
 
     c = calc_commands.split()
 
@@ -67,7 +67,7 @@ def get_crest_prm(calc_commands):
     return pal, maxcore
 
 
-def get_censo_prm(calc_commands, test=None):
+def get_censo_prm(input, calc_commands, test=None):
     
     pal, maxcore = 0, 4000
 
@@ -94,7 +94,7 @@ def get_censo_prm(calc_commands, test=None):
 
 
 
-def get_xtb_prm(calc_commands):
+def get_xtb_prm(input, calc_commands):
 
     c = calc_commands.split()
 

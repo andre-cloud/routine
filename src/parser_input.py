@@ -58,12 +58,12 @@ def check_input(file):
 
 def get_cpu_memory(input, calculation, calc_commands):
     return {
-        'orca': get_orca_prm(input),
-        'gaussian': get_gaussian_prm(input),
-        'crest' : get_crest_prm(calc_commands),
-        'censo' : get_censo_prm(calc_commands),
-        'xtb' : get_xtb_prm(calc_commands)
-    }[calculation]
+        'orca': get_orca_prm,
+        'gaussian': get_gaussian_prm,
+        'crest' : get_crest_prm,
+        'censo' : get_censo_prm,
+        'xtb' : get_xtb_prm
+    }[calculation](input, calc_commands)
 
 
 
