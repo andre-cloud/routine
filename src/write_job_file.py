@@ -64,7 +64,7 @@ def write_job_file(input_file, calculation, calc_cmd, slurm_cmd, test=False):
             calculation = calculation, 
             command_line_no_prog = cmd_not_prog, 
             creating_qm_all = '', 
-            update_README = f'update_readme.py {calculation} {input_file_no_extention}.out',
+            update_README = f'python update_readme.py {calculation} {input_file_no_extention}.out',
             SMTP = SMTP_SERVER_IP, 
             email = email_address,
         ))
