@@ -43,6 +43,10 @@ done
     return cmd 
 
 
+def censorc():
+    return '''if ! [[ -e .censorc ]]; then cp /data/$whoiam/.censorc .; fi; cp  $SLURM_SUBMIT_DIR/.censorc $SCRATCH_DIR'''
+
+
 def write_job_file(input_file, calculation, calc_cmd, slurm_cmd, test=False):
     """
     
@@ -82,6 +86,7 @@ def write_job_file(input_file, calculation, calc_cmd, slurm_cmd, test=False):
             update_README = f'update_readme.py {calculation} {input_file_no_extention if calculation in ["orca", "gaussian"] else calculation}.{ext}',
             SMTP = SMTP_SERVER_IP, 
             email = email_address,
+            censorc = '' if calculation != 'censo' else censorc()
         ))
 
     os.system('chmod u+x job-slurm.sh')

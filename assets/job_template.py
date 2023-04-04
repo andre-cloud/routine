@@ -50,6 +50,7 @@ rm .originals/README.md .originals/*slurm .originals/*sh
 
 ## COPYING THE FILES OF THE DIRECTORY IN THE SCRATCH
 cp -v -r $SLURM_SUBMIT_DIR/* $SCRATCH_DIR
+{censorc}
 cd $SCRATCH_DIR
 rm README.md
 
