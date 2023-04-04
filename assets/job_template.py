@@ -9,7 +9,7 @@ template = '''#!/bin/bash
 #SBATCH --output="out-%j-%N.slurm"
 {slurm_sbatchrc}
 
-module load {modules}
+module load {modules}{ver}
 
 echo "Job execution cmd:   {command_line}"
 echo "Job execution start: {date}"

@@ -77,6 +77,7 @@ def write_job_file(input_file, calculation, calc_cmd, slurm_cmd, test=False):
             abr = CALC_ABBREVIATION[calculation],
             slurm_sbatchrc = convert_slurm_cmd(slurm_cmd),
             modules = MODULE_NEEDED[calculation],
+            ver = ('/'+version) if version else '',
             command_line = cm,
             date = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"), 
             input_file = input_file_no_extention,
@@ -101,5 +102,5 @@ if __name__ == '__main__':
         'tests/orca_procs.inp', 
         'censo',
         'orca tests/orca_procs.inp',
-        {'mail-user': 'AP_tgram@mailrise.xyz', 'mail-type': 'NONE', 'exclude': 'motoro', 'nodelist': 'motoro', 'nodes-list': 'mume', 'ntasks': '44', 'mem-per-cpu': '1000'}, test=True
+        {'mail-user': 'AP_tgram@mailrise.xyz', 'mail-type': 'NONE', 'exclude': 'motoro', 'nodelist': 'motoro', 'nodes-list': 'mume', 'ntasks': '44', 'mem-per-cpu': '1000', 'version': '5.0.3'}, test=True
         )
