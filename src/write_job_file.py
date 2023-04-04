@@ -6,11 +6,8 @@ import datetime
 
 
 
-from src.defaults import DEFAULT_MAIL, CALC_ABBREVIATION, SMTP_SERVER_IP, MODULE_NEEDED
+from src.defaults import DEFAULT_MAIL, CALC_ABBREVIATION, SMTP_SERVER_IP, MODULE_NEEDED, launchers, qm_all_files
 from assets.job_template import template as job_template
-
-
-
 
 
 def convert_slurm_cmd(slurm_cmd):
@@ -29,14 +26,6 @@ def get_possible_versions(calculation, version, test=False):
     return (version in disp_version, disp_version)
 
 
-qm_all_files = {
-    'orca': 'inp xyz interp out hess final.interp',
-    'gaussian': 'gjf out log',
-    'censo': 'xyz out',
-    'xtb': 'xyz out', 
-    'crest': 'xyz out',
-}
-
 def create_qm_all(calculation, input_file_no_extention):
     cmd = f'ext=({qm_all_files[calculation]})'
     cmd += f'''
@@ -52,15 +41,6 @@ done
 '''
     
     return cmd 
-
-
-launchers = {
-    'orca': '$(which orca)',
-    'gaussian': 'g16',
-    'censo': 'censo',
-    'crest': 'crest',
-    'xtb': 'xtb'
-}
 
 
 def write_job_file(input_file, calculation, calc_cmd, slurm_cmd, test=False):
@@ -114,7 +94,7 @@ def write_job_file(input_file, calculation, calc_cmd, slurm_cmd, test=False):
 if __name__ == '__main__':
     write_job_file(
         'tests/orca_procs.inp', 
-        'orca',
+        'censo',
         'orca tests/orca_procs.inp',
         {'mail-user': 'AP_tgram@mailrise.xyz', 'mail-type': 'NONE', 'exclude': 'motoro', 'nodelist': 'motoro', 'nodes-list': 'mume', 'ntasks': '44', 'mem-per-cpu': '1000'}, test=True
         )

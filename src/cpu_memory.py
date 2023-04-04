@@ -3,11 +3,7 @@
 
 import re, os
 
-PREFIX = {
-    'k' : 1e-3,
-    'm' : 1e0,
-    'g' : 1e3
-}
+from src.defaults import PREFIX
 
 def get_orca_prm(input, calc_commands):
 

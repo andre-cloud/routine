@@ -53,3 +53,28 @@ MODULE_NEEDED = {
 SMTP_SERVER_IP = '192.168.114.75:8025'
 DEFAULT_MAIL='AP_tgram@mailrise.xyz,PR_tgram@mailrise.xyz'
 
+
+launchers = {
+    'orca': '$(which orca)',
+    'gaussian': 'g16',
+    'censo': 'censo --input',
+    'crest': 'crest',
+    'xtb': 'xtb'
+}
+
+
+qm_all_files = {
+    'orca': 'inp xyz interp out hess final.interp',
+    'gaussian': 'gjf out log',
+    'censo': 'xyz out',
+    'xtb': 'xyz out',
+    'crest': 'xyz out',
+}
+
+
+PREFIX = {
+    'k' : 1e-3,
+    'm' : 1e0,
+    'g' : 1e3
+}
+
