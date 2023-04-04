@@ -64,8 +64,10 @@ def write_job_file(input_file, calculation, calc_cmd, slurm_cmd, test=False):
     input_file_no_extention = os.path.splitext(input_file)[0]
 
     ext = 'out' if calculation != 'gaussian' else 'log'
+    output_file = f'{input_file_no_extention}.{ext}' if calculation in ['orca', 'gaussian'] else f'{calculation}.out'
+
     cm = calc_cmd + (
-        f' > $SLURM_SUBMIT_DIR/{input_file_no_extention}.{ext}' if calculation in ['orca'] else '' if calculation in ['gaussian'] else  f' > $SLURM_SUBMIT_DIR/{calculation}.out 2> $SLURM_SUBMIT_DIR/{calculation}.error')
+        f' > $SLURM_SUBMIT_DIR/{output_file}' if calculation in ['orca'] else '' if calculation in ['gaussian'] else  f' > $SLURM_SUBMIT_DIR/{output_file}.out 2> $SLURM_SUBMIT_DIR/{calculation}.error')
 
     cmd_not_prog = ' '.join(cm.split()[1:])
 
@@ -88,8 +90,6 @@ def write_job_file(input_file, calculation, calc_cmd, slurm_cmd, test=False):
             email = email_address,
             censorc = '' if calculation != 'censo' else censorc()
         ))
-
-    os.system('chmod u+x job-slurm.sh')
 
     return
 
