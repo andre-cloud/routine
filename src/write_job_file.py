@@ -44,7 +44,7 @@ done
 
 
 def censorc():
-    return '''if ! [[ -e .censorc ]]; then cp /data/$whoiam/.censorc .; fi; cp  $SLURM_SUBMIT_DIR/.censorc $SCRATCH_DIR'''
+    return '''if ! [[ -e .censorc ]]; then cp /data/$(whoami)/.censorc .; fi; cp  $SLURM_SUBMIT_DIR/.censorc $SCRATCH_DIR'''
 
 
 def write_job_file(input_file, calculation, calc_cmd, slurm_cmd, test=False):
