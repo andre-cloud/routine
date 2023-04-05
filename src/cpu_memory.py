@@ -94,7 +94,7 @@ def get_xtb_prm(input, calc_commands):
 
     c = calc_commands.split()
 
-    pal = [c[idx+1] for idx, i in enumerate(c) if i.startswith('-') and i.lower().endswith('p')][0]
+    pal = [c[idx+1] for idx, i in enumerate(c) if i.startswith('-') and i.lower().endswith('-p')][0]
 
     maxcore = str(int(22000/float(pal)))
 
