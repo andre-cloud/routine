@@ -6,7 +6,7 @@ import datetime
 
 
 
-from src.defaults import DEFAULT_MAIL, CALC_ABBREVIATION, SMTP_SERVER_IP, MODULE_NEEDED, launchers, qm_all_files
+from src.defaults import DEFAULT_MAIL, CALC_ABBREVIATION, SMTP_SERVER_IP, MODULE_NEEDED, LAUNCHERS, QM_ALL_FILES, OUTPUT_FILE
 from assets.job_template import template as job_template
 
 
@@ -27,7 +27,7 @@ def get_possible_versions(calculation, version, test=False):
 
 
 def create_qm_all(calculation, input_file_no_extention):
-    cmd = f'ext=({qm_all_files[calculation]})'
+    cmd = f'ext=({QM_ALL_FILES[calculation]})'
     cmd += f'''
 mkdir qm_all
 mv *.* qm_all/
@@ -63,11 +63,19 @@ def write_job_file(input_file, calculation, calc_cmd, slurm_cmd, test=False):
     email_address = slurm_cmd.pop('mail-user', DEFAULT_MAIL)
     input_file_no_extention = os.path.splitext(input_file)[0]
 
-    ext = 'out' if calculation != 'gaussian' else 'log'
-    output_file = f'{input_file_no_extention}.{ext}' if calculation in ['orca', 'gaussian'] else f'{calculation}.out'
 
-    cm = calc_cmd + (
-        f' > $SLURM_SUBMIT_DIR/{output_file}' if calculation in ['orca'] else '' if calculation in ['gaussian'] else  f' > $SLURM_SUBMIT_DIR/{output_file}.out 2> $SLURM_SUBMIT_DIR/{calculation}.error')
+    output_file = OUTPUT_FILE[calculation].format(input=input_file_no_extention)
+
+
+    if calculation == 'orca':
+        cm = calc_cmd + f'> $SLURM_SUBMIT_DIR/{output_file}'
+    elif calculation in ['gaussian']:
+        cm = calc_cmd
+    elif calculation in ['crest', 'censo', 'xtb']:
+        cm = calc_cmd + f'> $SLURM_SUBMIT_DIR/{output_file} 2> $SLURM_SUBMIT_DIR/{calculation}.error'
+    elif calculation in ['enan']:
+        cm = calc_cmd + f' -o $SLURM_SUBMIT_DIR/{output_file}'
+
 
     cmd_not_prog = ' '.join(cm.split()[1:])
 
@@ -81,12 +89,12 @@ def write_job_file(input_file, calculation, calc_cmd, slurm_cmd, test=False):
             command_line = cm,
             date = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"), 
             input_file = input_file_no_extention,
-            output_file = f'{input_file_no_extention}.{ext}',
+            output_file = output_file,
             calculation = calculation, 
-            launcher = launchers[calculation],
+            launcher = LAUNCHERS[calculation],
             command_line_no_prog = cmd_not_prog, 
             creating_qm_all = create_qm_all(calculation, input_file_no_extention), 
-            update_README = f'update_readme.py {calculation} {input_file_no_extention if calculation in ["orca", "gaussian"] else calculation}.{ext}',
+            update_README = f'update_readme.py {calculation} {output_file}',
             SMTP = SMTP_SERVER_IP, 
             email = email_address,
             censorc = '' if calculation != 'censo' else censorc()

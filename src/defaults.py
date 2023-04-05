@@ -32,44 +32,65 @@ def get_output(command):
 # EMAIL_REGEX = regex = r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,7}\b'
 
 
+POSS_CALC = [
+    'orca', 
+    'crest', 
+    'censo', 
+    'xtb', 
+    'gaussian', 
+    'enan',
+]
+
 CALC_ABBREVIATION = {
-    'orca': 'o', 
-    'crest': 's', 
-    'censo': 'c',
-    'xtb': 'x', 
-    'gaussian': 'g'
+    'orca'      : 'o', 
+    'crest'     : 's', 
+    'censo'     : 'c',
+    'xtb'       : 'x', 
+    'gaussian'  : 'g',
+    'enan'      : 'p',
 }
 
 
 MODULE_NEEDED = {
-    'censo': 'xtb/6.4.1 orca', 
-    'crest': 'xtb', # NON CAPISCO IL PERCHÉ 
-    'orca': 'orca', 
-    'gaussian': 'gaussian', 
-    'xtb': 'xtb'
+    'orca'      : 'orca', 
+    'crest'     : 'xtb',
+    'censo'     : 'xtb/6.4.1 orca', 
+    'xtb'       : 'xtb',
+    'gaussian'  : 'gaussian', 
+    'enan'      : 'orca',
 }
 
+LAUNCHERS = {
+    'orca'      : '$(which orca)',
+    'crest'     : 'crest',
+    'censo'     : 'censo --input',
+    'xtb'       : 'xtb',
+    'gaussian'  : 'g16',
+    'enan'      : 'ensemble_analyser.py'
+}
+
+
+QM_ALL_FILES = {
+    'orca'      : 'inp xyz interp out hess final.interp',
+    'crest'     : 'xyz out',
+    'censo'     : 'xyz out',
+    'xtb'       : 'xyz out',
+    'gaussian'  : 'gjf out log',
+    'enan'      : 'xyz',
+}
+
+
+OUTPUT_FILE = {
+    'orca'      : '{input}.out',
+    'crest'     : 'crest.out',
+    'censo'     : 'censo.out',
+    'xtb'       : 'xtb.out',
+    'gaussian'  : '{input}.log',
+    'enan'      : 'output.out',
+}
 
 SMTP_SERVER_IP = '192.168.114.75:8025'
 DEFAULT_MAIL='AP_tgram@mailrise.xyz,PR_tgram@mailrise.xyz'
-
-
-launchers = {
-    'orca': '$(which orca)',
-    'gaussian': 'g16',
-    'censo': 'censo --input',
-    'crest': 'crest',
-    'xtb': 'xtb'
-}
-
-
-qm_all_files = {
-    'orca': 'inp xyz interp out hess final.interp',
-    'gaussian': 'gjf out log',
-    'censo': 'xyz out',
-    'xtb': 'xyz out',
-    'crest': 'xyz out',
-}
 
 
 PREFIX = {
@@ -77,4 +98,5 @@ PREFIX = {
     'm' : 1e0,
     'g' : 1e3
 }
+
 

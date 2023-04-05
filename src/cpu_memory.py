@@ -101,6 +101,17 @@ def get_xtb_prm(input, calc_commands):
     return pal, maxcore
 
 
+
+def get_enan_prm(input, calc_commands):
+
+    c = calc_commands.split()
+    pal = [c[idx+1] for idx, i in enumerate(c) if i.startswith('-') and i.lower().endswith('-cpu')][0]
+
+    maxcore = str(4000)
+
+    return pal, maxcore
+
+
 if __name__ == '__main__':
     print(get_orca_prm('tests/orca_pal.inp', None))
     print(get_orca_prm('tests/orca_procs.inp', None))
@@ -111,3 +122,4 @@ if __name__ == '__main__':
     print(get_xtb_prm(None, '--opt -P 4 --input input'))
 
     print(get_censo_prm(None, '-inp ensemble.xyz -solvent toluene', True))
+    print(get_enan_prm(None, 'ensemble.xyz -cpu  44 -p protocol.json -o $SLURM_SUBMIT_DIR/output.out'))

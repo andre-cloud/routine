@@ -3,7 +3,9 @@
 
 import argparse, os
 
-from src.cpu_memory import get_censo_prm, get_crest_prm, get_gaussian_prm, get_orca_prm, get_xtb_prm
+from src.defaults import POSS_CALC
+
+from src.cpu_memory import get_censo_prm, get_crest_prm, get_gaussian_prm, get_orca_prm, get_xtb_prm, get_enan_prm
 
 
 
@@ -13,10 +15,13 @@ def is_slurm(k):
 def parse_args():
 
     parser = argparse.ArgumentParser()
-    parser.add_argument('calc', choices=['orca', 'crest', 'censo', 'gaussian', 'xtb'])
+    parser.add_argument('calc', choices=POSS_CALC)
     parser.add_argument('file')
 
     args, unknown = parser.parse_known_args()
+
+
+
     if not check_input(args.file):
         raise IOError('Input not existing')
 
@@ -53,23 +58,22 @@ def parse_args():
 
 
 def check_input(file):
+    
     return os.path.exists(os.path.join(os.getcwd(), file))
 
 
 def get_cpu_memory(input, calculation, calc_commands):
+    
     return {
-        'orca': get_orca_prm,
-        'gaussian': get_gaussian_prm,
-        'crest' : get_crest_prm,
-        'censo' : get_censo_prm,
-        'xtb' : get_xtb_prm
+        'orca'      : get_orca_prm,
+        'crest'     : get_crest_prm,
+        'censo'     : get_censo_prm,
+        'xtb'       : get_xtb_prm,
+        'gaussian'  : get_gaussian_prm,
+        'enan'      : get_enan_prm
     }[calculation](input, calc_commands)
 
 
-
-def check_slurm_command(commands):
-
-    return
 
 if __name__ == '__main__':
     print(parse_args())

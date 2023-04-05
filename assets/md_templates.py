@@ -44,3 +44,8 @@ gaussian_template = common_template + '''
 ---
 {parsed_input}
 ''' + note_template
+
+enan_template = common_template + '''
+---
+{parsed_input}
+''' + note_template
