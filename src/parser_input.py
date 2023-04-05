@@ -28,8 +28,8 @@ def parse_args():
 
 
     sbatchrc = []
-    if os.path.exists(os.path.join('/', os.getlogin(), '.sbatchrc')):
-        with open(os.path.join('/', os.getlogin(), '.sbatchrc')) as f:
+    if os.path.exists(os.path.join('/', 'data', os.getlogin(), '.sbatchrc')):
+        with open(os.path.join('/', 'data', os.getlogin(), '.sbatchrc')) as f:
             sbatchrc = [i.split()[1] for i in f.readlines()]
     else: 
         fl = """#SBATCH --mail-user=AP_tgram@mailrise.xyz
