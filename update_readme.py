@@ -86,6 +86,13 @@ def xtb_parser(output):
 
     return text
 
+
+def enan_parser(output):
+
+    text = '-'*20 + '\nCALCULATION ENDED\n'+'-'*20
+
+    return text
+
 def gaussian_parser(output):
 
     try:
@@ -127,6 +134,7 @@ parser = {
     'censo'    : censo_parser,
     'xtb'      : xtb_parser,
     'gaussian' : gaussian_parser,
+    'enan'     : enan_parser,
 }
 
 
