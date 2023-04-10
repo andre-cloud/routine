@@ -30,7 +30,7 @@ def create_qm_all(calculation, input_file_no_extention):
     cmd = f'ext=({QM_ALL_FILES[calculation]})'
     cmd += f'''
 mkdir qm_all
-mv *.* qm_all/
+mv * .* qm_all/
 
 for i in ${"{ext[@]}"}; do 
     echo {input_file_no_extention}.$i
