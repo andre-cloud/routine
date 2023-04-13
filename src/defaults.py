@@ -76,7 +76,7 @@ QM_ALL_FILES = {
     'censo'     : 'xyz out',
     'xtb'       : 'xyz out',
     'gaussian'  : 'gjf out log',
-    'enan'      : 'xyz',
+    'enan'      : 'xyz json',
 }
 
 
