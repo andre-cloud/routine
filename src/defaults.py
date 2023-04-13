@@ -66,7 +66,7 @@ LAUNCHERS = {
     'censo'     : 'censo --input',
     'xtb'       : 'xtb',
     'gaussian'  : 'g16',
-    'enan'      : 'ensemble_analyser.py'
+    'enan'      : 'ensemble_analyser.py -e'
 }
 
 
