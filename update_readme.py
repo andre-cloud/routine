@@ -42,7 +42,7 @@ def orca_parser(output):
             text += f'\nNumber of imaginary frequency: {len(vib[vib<0])}'
             if vib[vib<0].size>0: 
                 text += f'\n\tImaginary freq: {", ".join([str(i) for i in vib[vib<0]])}'
-    
+        text += '\n'
     else:
         text = '-'*20 + '\nCALCULATION ABORTED\n'+'-'*20
         text += '\n\n' + tail(fl, 10)
