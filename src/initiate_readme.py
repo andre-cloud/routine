@@ -46,7 +46,7 @@ def crest_parser(input_file, cmd_line):
 
     cmd = cmd_line
     if 'cinp' in cmd_line:
-        file = [j[idx+1] for idx,j in enumerate(cmd_line.split()) if 'cinp' in j][0] 
+        # file = [j[idx+1] for idx,j in enumerate(cmd_line.split()) if 'cinp' in j][0] 
         i = ['Constrained conformational search']
     else:
         i = ['Conformational search of the geometry']
