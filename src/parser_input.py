@@ -2,10 +2,12 @@
 
 
 import argparse, os
+import getpass
+
 
 from src.defaults import POSS_CALC
-
 from src.cpu_memory import get_censo_prm, get_crest_prm, get_gaussian_prm, get_orca_prm, get_xtb_prm, get_enan_prm
+
 
 
 
@@ -28,7 +30,7 @@ def parse_args():
 
 
     sbatchrc = []
-    if os.path.exists(os.path.join('/', 'data', os.getlogin(), '.sbatchrc')):
+    if os.path.exists(os.path.join('/', 'data', getpass.getuser(), '.sbatchrc')):
         with open(os.path.join('/', 'data', os.getlogin(), '.sbatchrc')) as f:
             sbatchrc = [i.split()[1] for i in f.readlines()]
     else: 
