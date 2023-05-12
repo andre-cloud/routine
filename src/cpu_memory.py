@@ -8,7 +8,7 @@ from src.defaults import PREFIX
 def get_orca_prm(input, calc_commands):
 
     with open(input) as f:
-        fl = f.read()
+        fl = f.read().lower()
     
     pal = re.search('^!.*pal[1-9][0-9]{0,1}', fl)
     if pal:
@@ -34,7 +34,7 @@ def get_orca_prm(input, calc_commands):
 def get_gaussian_prm(input, calc_commands):
 
     with open(input) as f:
-        fl = f.read()
+        fl = f.read().lower()
     
     pal = re.search('%( ){0,}nprocshared=( ){0,}[1-9][0-9]{0,2}', fl.lower())
     if pal:
