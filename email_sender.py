@@ -9,9 +9,9 @@ SMTP = SMTP_SERVER_IP
 sender = 'slurm@righi.lab'
 
 
-def send_mail(mail, jobid):
+def send_mail(mail, directory):
     try:
-        with open('README.md') as f:
+        with open(os.path.join(directory, 'README.md')) as f:
             text = f.read()
 
         text = f'''From: SLURM <{sender}>
