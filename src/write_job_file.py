@@ -67,7 +67,7 @@ def write_job_file(input_file, calculation, calc_cmd, slurm_cmd, test=False):
     output_file = OUTPUT_FILE[calculation].format(input=input_file_no_extention)
 
 
-    if calculation == 'orca':
+    if calculation in ['orca', 'gaussian']:
         cm = calc_cmd + f' > $SLURM_SUBMIT_DIR/{output_file}'
     elif calculation in ['gaussian']:
         cm = calc_cmd
