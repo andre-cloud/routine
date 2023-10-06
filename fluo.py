@@ -90,6 +90,7 @@ cd THF/step_1
     command_2 = """
 ln -s $SLURM_SUBMIT_DIR/qm_all/THF-step1.chk ../step_2
 ln -s $SLURM_SUBMIT_DIR/qm_all/THF-step1.chk ../step_3
+cd $SLURM_SUBMIT_DIR/../../
 for i in *
 do
   if [ "$i" != "THF" ]
@@ -98,6 +99,7 @@ do
   fi
 done
 
+cd $SLURM_SUBMIT_DIR
 """
 
     write_job_file(file, "gaussian", f"g16 {file}", slurm_cmd=sc, command_1=command_1, command_2=command_2)
@@ -204,13 +206,16 @@ cd THF/step_5
 
     command_2 = """
 ln -s $SLURM_SUBMIT_DIR/qm_all/THF-step1.chk ../step_6
+cd $SLURM_SUBMIT_DIR/../../ 
 for i in *
 do
   if [ "$i" != "THF" ]
   then
-    ln -s $SLURM_SUBMIT_DIR/qm_all/THF-step5.chk SLURM_SUBMIT_DIR/../$i/step_5
+    ln -s $SLURM_SUBMIT_DIR/qm_all/THF-step5.chk $i/step_5
   fi
 done
+
+cd $SLURM_SUBMIT_DIR
 
 """
 
