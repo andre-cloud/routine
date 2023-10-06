@@ -402,7 +402,7 @@ def main():
     os.chdir("THF")
     write_THF(coord, args.cpu)
     os.chdir(PATH)
-    for i in args.sol:
+    for i in args.solv:
         write_solv(args.cpu, i, gau_solv=GAU_SOLV[i])
         os.chdir(PATH)
     
