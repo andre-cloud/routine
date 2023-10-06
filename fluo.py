@@ -288,7 +288,7 @@ iop(1/7=450)
 
 --link1--
 !step 3 - Solvatation on GS of the PES with unquilibrated solvent
-%oldchk=/{solv}-step1.chk
+%oldchk={solv}-step1.chk
 %chk={solv}-step3.chk
 %nprocshared={cpu}
 %mem={int(int(cpu)*1.7)}GB
@@ -408,7 +408,7 @@ GAU_SOLV = {
 "HEX": "n-Hexane",
 "ACN": "Acetonitrile",
 "TOL": "Toluene",
-"DCM": "DCM",
+"DCM": "Dichloromethane",
 "MeOH": "Methanol"
 }
 
