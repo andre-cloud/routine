@@ -1,3 +1,5 @@
+#!/data/bin/python_env/bin/python
+
 FUNC = "cam-b3lyp"
 BASIS_SMALL = "6-31g(d)"
 BASIS_BIG = "6-31+g(d,p)"
