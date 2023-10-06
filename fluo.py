@@ -95,7 +95,7 @@ for i in *
 do
   if [ "$i" != "THF" ]
   then
-    ln -s $SLURM_SUBMIT_DIR/qm_all/THF-step1.chk $SLURM_SUBMIT_DIR/../$i/step_1
+    ln -s $SLURM_SUBMIT_DIR/qm_all/THF-step1.chk $i/step_1
   fi
 done
 
