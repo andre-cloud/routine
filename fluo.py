@@ -353,6 +353,18 @@ iop(1/7=450)
 
     """
 
+    file = f"{solv}-step5.gjf"
+    with open(file, "w") as f:
+        f.write(txt)
+
+    command_1 = command_2 = None 
+
+    sc = SLURM_COMMANDS.copy()
+    sc['ntasks'] = cpu
+    sc['mem-per-cpu'] = f"{int(int(int(cpu)*1.7)/int(cpu)*1000)}MB"
+    write_job_file(file, "gaussian", f"g16 {file}", slurm_cmd=sc, command_1=command_1, command_2=command_2)
+    return True
+
 
 def write_THF(coord, cpu):
     PATH = os.getcwd()
