@@ -348,11 +348,11 @@ iop(1/7=450)
     """
 
 
-def write_THF(cpu):
+def write_THF(coord, cpu):
     PATH = os.getcwd()
     os.mkdir("step_1")
     os.chdir("step_1")
-    thf_s1(cpu)
+    thf_s1(coord, cpu)
     os.chdir(PATH)
     os.mkdir("step_2")
     os.chdir("step_2")
@@ -396,11 +396,11 @@ GAU_SOLV = {
 
 def main():
     args = parser()
-    os.chdir(os.path.split(args.log)[0])
     PATH = os.getcwd()
+    coord = get_opt(args.log)
     os.mkdir("THF")
     os.chdir("THF")
-    write_THF(args.cpu)
+    write_THF(coord, args.cpu)
     os.chdir(PATH)
     for i in args.sol:
         write_solv(args.cpu, i, gau_solv=GAU_SOLV[i])
