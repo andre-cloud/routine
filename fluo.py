@@ -75,6 +75,7 @@ sbatch --dependency=afterok:$SLURM_JOB_ID job-slurm.sh
 cd ../../
 for i in *
 do
+  echo $i
   if [ "$i" != "THF" ]
   then
     cd $i/step_1
@@ -87,13 +88,13 @@ cd THF/step_1
 """
 
     command_2 = """
-cp qm_all/THF-step1.chk ../step_2
-cp qm_all/THF-step1.chk ../step_3
+ln -s $SLURM_SUBMIT_DIR/qm_all/THF-step1.chk ../step_2
+ln -s $SLURM_SUBMIT_DIR/qm_all/THF-step1.chk ../step_3
 for i in *
 do
   if [ "$i" != "THF" ]
   then
-    cp qm_all/THF-step1.chk $i/step_1
+    ln -s $SLURM_SUBMIT_DIR/qm_all/THF-step1.chk $i/step_1
   fi
 done
 
@@ -119,11 +120,11 @@ def thf_s2(cpu):
 """
     command_1 = """
 cd ../step_5 # for the second step
-sbatch job-slurm.sh --dependency=afterok:$SLURM_JOB_ID
+sbatch  --dependency=afterok:$SLURM_JOB_ID job-slurm.sh
 """
 
     command_2 = """
-cp qm_all/THF-step2.chk ../step_5
+ln -s $SLURM_SUBMIT_DIR/qm_all/THF-step2.chk ../step_5
 """
     file = "THF-step2.gjf"
     with open(file, "w") as f:
@@ -186,14 +187,14 @@ iop(1/7=450)
 
     command_1 = """
 cd ../step_6 # for the sixth step
-sbatch job-slurm.sh --dependency=afterok:$SLURM_JOB_ID 
+sbatch  --dependency=afterok:$SLURM_JOB_ID job-slurm.sh 
 cd ../../
 for i in *
 do
   if [ "$i" != "THF" ]
   then
     cd $i/step_5
-    sbatch job-slurm.sh --dependency=afterok:$SLURM_JOB_ID
+    sbatch  --dependency=afterok:$SLURM_JOB_ID job-slurm.sh
     cd -
   fi
 done
@@ -202,12 +203,12 @@ cd THF/step_5
 """
 
     command_2 = """
-cp qm_all/THF-step1.chk ../step_6
+ln -s $SLURM_SUBMIT_DIR/qm_all/THF-step1.chk ../step_6
 for i in *
 do
   if [ "$i" != "THF" ]
   then
-    cp qm_all/THF-step5.chk $i/step_5
+    ln -s $SLURM_SUBMIT_DIR/qm_all/THF-step5.chk $i/step_5
   fi
 done
 
