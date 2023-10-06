@@ -19,9 +19,9 @@ SLURM_COMMANDS = read_sbatchrc()
 def parser():
 
     parser = argparse.ArgumentParser()
-    parser.add_argument('cpu')
-    parser.add_argument('log')
-    parser.add_argument('solv', nargs='+')
+    parser.add_argument('-cpu')
+    parser.add_argument('-log')
+    parser.add_argument('-solv', nargs='+')
 
     return parser.parse_args()
 

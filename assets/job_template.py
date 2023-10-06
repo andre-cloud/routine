@@ -10,6 +10,7 @@ template = '''#!/bin/bash
 {slurm_sbatchrc}
 
 module load {modules}{ver}
+SCRATCH_DIR="/scratch/slurm-$SLURM_JOB_ID"
 
 echo "Job execution cmd:   {command_line}"
 echo "Job execution start: {date}"
@@ -29,8 +30,6 @@ echo
 
 
 # CREATION OF ALL THE DIRECTORIES NEEDED ON EACH NODE
-
-SCRATCH_DIR="/scratch/slurm-$SLURM_JOB_ID"
 
 for node in $(scontrol show hostnames $SLURM_JOB_NODELIST)
 do
