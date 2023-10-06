@@ -69,16 +69,16 @@ S0
     # When THF-s1 ends, THF-s2 and SOLV*-s1 starts
     command_1 = """
 cd ../step_2 # for the second step
-sbatch job-slurm.sh -d afterok:$SLURM_JOB_ID
+sbatch --dependency=afterok:$SLURM_JOB_ID job-slurm.sh
 cd ../step_3 # for the third step
-sbatch job-slurm.sh -d afterok:$SLURM_JOB_ID
+sbatch --dependency=afterok:$SLURM_JOB_ID job-slurm.sh
 cd ../../
 for i in *
 do
   if [ "$i" != "THF" ]
   then
     cd $i/step_1
-    sbatch job-slurm.sh -d afterok:$SLURM_JOB_ID
+    sbatch --dependency=afterok:$SLURM_JOB_ID job-slurm.sh
     cd -
   fi
 done
@@ -119,7 +119,7 @@ def thf_s2(cpu):
 """
     command_1 = """
 cd ../step_5 # for the second step
-sbatch job-slurm.sh -d afterok:$SLURM_JOB_ID
+sbatch job-slurm.sh --dependency=afterok:$SLURM_JOB_ID
 """
 
     command_2 = """
@@ -186,14 +186,14 @@ iop(1/7=450)
 
     command_1 = """
 cd ../step_6 # for the sixth step
-sbatch job-slurm.sh -d afterok:$SLURM_JOB_ID 
+sbatch job-slurm.sh --dependency=afterok:$SLURM_JOB_ID 
 cd ../../
 for i in *
 do
   if [ "$i" != "THF" ]
   then
     cd $i/step_5
-    sbatch job-slurm.sh -d afterok:$SLURM_JOB_ID
+    sbatch job-slurm.sh --dependency=afterok:$SLURM_JOB_ID
     cd -
   fi
 done
