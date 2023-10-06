@@ -29,17 +29,7 @@ def parse_args():
 
 
 
-    sbatchrc = []
-    if os.path.exists(os.path.join('/', 'data', getpass.getuser(), '.sbatchrc')):
-        with open(os.path.join('/', 'data', os.getlogin(), '.sbatchrc')) as f:
-            sbatchrc = [i.split()[1] for i in f.readlines()]
-    else: 
-        fl = """#SBATCH --mail-user=AP_tgram@mailrise.xyz
-#SBATCH --mail-type=NONE
-#SBATCH --exclude=motoro"""
-        sbatchrc = [i.split()[1] for i in fl.splitlines()]   
-
-    slurm_commands = {i.split('=')[0].strip('-'):i.split('=')[1] for i in sbatchrc}
+    slurm_commands = read_sbatchrc()
 
 
     for i in list(filter(is_slurm, unknown)):
@@ -56,6 +46,20 @@ def parse_args():
     slurm_commands['mem-per-cpu'] = mem
 
     return args.file, args.calc, calc_commands, slurm_commands
+
+def read_sbatchrc():
+    sbatchrc = []
+    if os.path.exists(os.path.join('/', 'data', getpass.getuser(), '.sbatchrc')):
+        with open(os.path.join('/', 'data', os.getlogin(), '.sbatchrc')) as f:
+            sbatchrc = [i.split()[1] for i in f.readlines()]
+    else: 
+        fl = """#SBATCH --mail-user=AP_tgram@mailrise.xyz
+#SBATCH --mail-type=NONE
+#SBATCH --exclude=motoro"""
+        sbatchrc = [i.split()[1] for i in fl.splitlines()]   
+
+    slurm_commands = {i.split('=')[0].strip('-'):i.split('=')[1] for i in sbatchrc}
+    return slurm_commands
 
 
 

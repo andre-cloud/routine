@@ -40,6 +40,7 @@ done
 
 source /data/bin/python_env/bin/activate
 
+{command_1}
 
 # SETTING THE FOLDER FOR THE CALCULATION
 
@@ -81,6 +82,8 @@ rsync -av --no-p --no-g --chmod=ugo=rwX --exclude '*.tmp' $SCRATCH_DIR/* ./ && r
 # SEND NOTIFICATION EMAIL
 
 ssh master email_sender.py {email} $SLURM_SUBMIT_DIR
+
+{command_2}
 
 deactivate
 '''
