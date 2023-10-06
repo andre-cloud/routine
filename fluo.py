@@ -48,7 +48,7 @@ def thf_s1(coord, cpu):
 %nprocshared={cpu}
 %mem={int(int(cpu)*1.7)}GB
 # {FUNC}/{BASIS_SMALL} Opt freq(savenormalmodes) SCRF=(Solvent=THF)
-iop(1/7=450) Geom=allCheck Guess=Read
+iop(1/7=450)
 
 S0 
 
