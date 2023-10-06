@@ -32,7 +32,7 @@ def parser():
 
 
 def get_opt(logfile): 
-    data = cclib.cc.ioread(logfile)
+    data = cclib.io.ccread(logfile)
     atoms = [pt[i] for i in data.atomnos]
     xyz_coordinates = data.atomcoords[-1]
     txt = ''
