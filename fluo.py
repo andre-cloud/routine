@@ -64,7 +64,7 @@ S0
 
     sc = SLURM_COMMANDS.copy()
     sc['ntasks'] = cpu
-    sc['mem-per-cpu'] = f"{int(int(cpu)*1.7)/int(cpu)}GB"
+    sc['mem-per-cpu'] = f"{int(int(int(cpu)*1.7)/int(cpu)*1000)}MB"
 
     # When THF-s1 ends, THF-s2 and SOLV*-s1 starts
     command_1 = """
@@ -131,7 +131,7 @@ cp qm_all/THF-step2.chk ../step_5
 
     sc = SLURM_COMMANDS.copy()
     sc['ntasks'] = cpu
-    sc['mem-per-cpu'] = f"{int(int(cpu)*1.7)/int(cpu)}GB"
+    sc['mem-per-cpu'] = f"{int(int(int(cpu)*1.7)/int(cpu)*1000)}MB"
     write_job_file(file, "gaussian", f"g16 {file}", slurm_cmd=sc, command_1=command_1, command_2=command_2)
     return True
 
@@ -167,7 +167,7 @@ def thf_s3(cpu):
 
     sc = SLURM_COMMANDS.copy()
     sc['ntasks'] = cpu
-    sc['mem-per-cpu'] = f"{int(int(cpu)*1.7)/int(cpu)}GB"
+    sc['mem-per-cpu'] = f"{int(int(int(cpu)*1.7)/int(cpu)*1000)}MB"
     write_job_file(file, "gaussian", f"g16 {file}", slurm_cmd=sc, command_1=command_1, command_2=command_2)
     return True
 
@@ -220,7 +220,7 @@ done
 
     sc = SLURM_COMMANDS.copy()
     sc['ntasks'] = cpu
-    sc['mem-per-cpu'] = f"{int(int(cpu)*1.7)/int(cpu)}GB"
+    sc['mem-per-cpu'] = f"{int(int(int(cpu)*1.7)/int(cpu)*1000)}MB"
     write_job_file(file, "gaussian", f"g16 {file}", slurm_cmd=sc, command_1=command_1, command_2=command_2)
     return True
 
@@ -252,7 +252,7 @@ def thf_s6(cpu):
 
     sc = SLURM_COMMANDS.copy()
     sc['ntasks'] = cpu
-    sc['mem-per-cpu'] = f"{int(int(cpu)*1.7)/int(cpu)}GB"
+    sc['mem-per-cpu'] = f"{int(int(int(cpu)*1.7)/int(cpu)*1000)}MB"
     write_job_file(file, "gaussian", f"g16 {file}", slurm_cmd=sc, command_1=command_1, command_2=command_2)
     return True
 
@@ -309,7 +309,7 @@ iop(1/7=450)
 
     sc = SLURM_COMMANDS.copy()
     sc['ntasks'] = cpu
-    sc['mem-per-cpu'] = f"{int(int(cpu)*1.7)/int(cpu)}GB"
+    sc['mem-per-cpu'] = f"{int(int(int(cpu)*1.7)/int(cpu)*1000)}MB"
     write_job_file(file, "gaussian", f"g16 {file}", slurm_cmd=sc, command_1=command_1, command_2=command_2)
     return True
 
