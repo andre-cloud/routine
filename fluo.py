@@ -205,7 +205,7 @@ cd THF/step_5
 """
 
     command_2 = """
-ln -s $SLURM_SUBMIT_DIR/qm_all/THF-step1.chk ../step_6
+ln -s $SLURM_SUBMIT_DIR/qm_all/THF-step5.chk ../step_6
 cd $SLURM_SUBMIT_DIR/../../ 
 for i in *
 do
