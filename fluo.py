@@ -181,7 +181,7 @@ def thf_s5(cpu):
 %chk=THF-step5.chk
 %nprocshared={cpu}
 %mem={int(int(cpu)*1.7)}GB
-# {FUNC}/{BASIS_SMALL} opt freq(savenormalmodes) TD(NStates=1,Root=2) SCRF(Solvent=THF) Geom=allCheck Guess=Read
+# {FUNC}/{BASIS_SMALL} opt freq(savenormalmodes) TD(NStates=1,Root=1) SCRF(Solvent=THF) Geom=allCheck Guess=Read
 iop(1/7=450)
 
 
@@ -236,7 +236,7 @@ def thf_s6(cpu):
 %chk=THF-step6.chk
 %nprocshared={cpu}
 %mem={int(int(cpu)*1.7)}GB
-# {FUNC}/{BASIS_BIG} TD(NStates=1, Root=2) Geom=allCheck Guess=Read SCRF(Solvent=THF,ExternalIteration,NonEquilibrium=Save)
+# {FUNC}/{BASIS_BIG} TD(NStates=1, Root=1) Geom=allCheck Guess=Read SCRF(Solvent=THF,ExternalIteration,NonEquilibrium=Save)
 
 
 --link1--
