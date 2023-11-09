@@ -115,7 +115,7 @@ def thf_s2(cpu):
 %chk=THF-step2.chk
 %nprocshared={cpu}
 %mem={int(int(cpu)*1.7)}GB
-# {FUNC}/{BASIS_BIG} TD(NStates=3) SCRF(solvent=THF) Geom=allCheck Guess=Read
+# {FUNC}/{BASIS_BIG} TD(triplets, NStates=3) SCRF(solvent=THF) Geom=allCheck Guess=Read
 
 
 
@@ -155,7 +155,7 @@ def thf_s3(cpu):
 %chk=THF-step4.chk
 %nprocshared={cpu}
 %mem={int(int(cpu)*1.7)}GB
-# {FUNC}/{BASIS_BIG} TD(NStates=1,Root=1) Geom=allCheck Guess=Read SCRF(Solvent=THF,ExternalIteration,NonEquilibrium=Read)
+# {FUNC}/{BASIS_BIG} TD(triplets,NStates=1,Root=1) Geom=allCheck Guess=Read SCRF(Solvent=THF,ExternalIteration,NonEquilibrium=Read)
 
 
 
@@ -181,7 +181,7 @@ def thf_s5(cpu):
 %chk=THF-step5.chk
 %nprocshared={cpu}
 %mem={int(int(cpu)*1.7)}GB
-# {FUNC}/{BASIS_SMALL} opt freq(savenormalmodes) TD(NStates=1,Root=2) SCRF(Solvent=THF) Geom=allCheck Guess=Read
+# {FUNC}/{BASIS_SMALL} opt freq(savenormalmodes) TD(triplets,NStates=1,Root=1) SCRF(Solvent=THF) Geom=allCheck Guess=Read
 iop(1/7=450)
 
 
@@ -236,7 +236,7 @@ def thf_s6(cpu):
 %chk=THF-step6.chk
 %nprocshared={cpu}
 %mem={int(int(cpu)*1.7)}GB
-# {FUNC}/{BASIS_BIG} TD(NStates=1, Root=2) Geom=allCheck Guess=Read SCRF(Solvent=THF,ExternalIteration,NonEquilibrium=Save)
+# {FUNC}/{BASIS_BIG} TD(triplets, NStates=1, Root=1) Geom=allCheck Guess=Read SCRF(Solvent=THF,ExternalIteration,NonEquilibrium=Save)
 
 
 --link1--
@@ -283,7 +283,7 @@ iop(1/7=450)
 %chk={solv}-step2.chk
 %nprocshared={cpu}
 %mem={int(int(cpu)*1.7)}GB
-# {FUNC}/{BASIS_BIG} TD(NStates=3) SCRF(solvent={gau_solv}) Geom=allCheck Guess=Read
+# {FUNC}/{BASIS_BIG} TD(triplets, NStates=3) SCRF(solvent={gau_solv}) Geom=allCheck Guess=Read
 
 
 --link1--
@@ -302,7 +302,7 @@ iop(1/7=450)
 %chk={solv}-step4.chk
 %nprocshared={cpu}
 %mem={int(int(cpu)*1.7)}GB
-# {FUNC}/{BASIS_BIG} TD(NStates=1,Root=1) Geom=allCheck Guess=Read SCRF(Solvent={gau_solv},ExternalIteration,NonEquilibrium=Read)
+# {FUNC}/{BASIS_BIG} TD(triplets, NStates=1,Root=1) Geom=allCheck Guess=Read SCRF(Solvent={gau_solv},ExternalIteration,NonEquilibrium=Read)
 
 
 """
@@ -328,7 +328,7 @@ def solv_s5(cpu, solv, gau_solv):
 %chk={solv}-step5.chk
 %nprocshared={cpu}
 %mem={int(int(cpu)*1.7)}GB
-# {FUNC}/{BASIS_SMALL} opt freq(savenormalmodes) TD(NStates=1,Root=1) SCRF(Solvent={gau_solv}) Geom=allCheck Guess=Read
+# {FUNC}/{BASIS_SMALL} opt freq(savenormalmodes) TD(triplets, NStates=1,Root=1) SCRF(Solvent={gau_solv}) Geom=allCheck Guess=Read
 iop(1/7=450)
 
 
@@ -338,7 +338,7 @@ iop(1/7=450)
 %chk={solv}-step6.chk
 %nprocshared={cpu}
 %mem={int(int(cpu)*1.7)}GB
-# {FUNC}/{BASIS_BIG} TD(NStates=1, Root=1) Geom=allCheck Guess=Read SCRF(Solvent={gau_solv},ExternalIteration,NonEquilibrium=Save)
+# {FUNC}/{BASIS_BIG} TD(triplets, NStates=1, Root=1) Geom=allCheck Guess=Read SCRF(Solvent={gau_solv},ExternalIteration,NonEquilibrium=Save)
 
 
 --link1--
