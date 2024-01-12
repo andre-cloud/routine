@@ -48,6 +48,8 @@ mkdir .originals
 cp * .originals
 rm .originals/README.md .originals/*slurm .originals/*sh
 
+echo $SLURM_SUBMIT_DIR > WD
+
 ## COPYING THE FILES OF THE DIRECTORY IN THE SCRATCH
 cp -v -r $SLURM_SUBMIT_DIR/* $SCRATCH_DIR
 {censorc}
@@ -76,11 +78,13 @@ rm *.slurm *.sh
 cd $SLURM_SUBMIT_DIR
 rsync -av --no-p --no-g --chmod=ugo=rwX --exclude '*.tmp' $SCRATCH_DIR/* ./ && rm -fr $SCRATCH_DIR
 
+rm WD
+
 {update_README}
 
 # SEND NOTIFICATION EMAIL
 
-ssh master email_sender.py {email} $SLURM_SUBMIT_DIR
+ssh 192.168.111.100 email_sender.py {email} $SLURM_SUBMIT_DIR
 
 {command_2}
 
