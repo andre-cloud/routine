@@ -48,12 +48,15 @@ mkdir .originals
 cp * .originals
 rm .originals/README.md .originals/*slurm .originals/*sh
 
-echo $SLURM_SUBMIT_DIR > WD
 
 ## COPYING THE FILES OF THE DIRECTORY IN THE SCRATCH
 cp -v -r $SLURM_SUBMIT_DIR/* $SCRATCH_DIR
 {censorc}
 if [[ -e .censorc ]]; then cp .censorc .originals; fi
+
+
+echo "scp $SLURMD_NODENAME:$SCRATCH_DIR/{output_file} $SLURM_SUBMIT_DIR" > $SLURM_SUBMIT_DIR/update
+chmod u+x $SLURM_SUBMIT_DIR/update
 
 cd $SCRATCH_DIR
 rm README.md
