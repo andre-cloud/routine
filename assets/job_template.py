@@ -91,5 +91,7 @@ ssh 192.168.111.100 email_sender.py {email} $SLURM_SUBMIT_DIR
 
 {command_2}
 
+rm $SLURM_SUBMIT_DIR/update
+
 deactivate
 '''
