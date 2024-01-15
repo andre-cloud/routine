@@ -26,11 +26,13 @@ def get_possible_versions(calculation, version, test=False):
     return (version in disp_version, disp_version)
 
 
-def create_qm_all(calculation, input_file_no_extention):
+def create_qm_all(calculation, input_file_no_extention, output_file):
     cmd = f'ext=({QM_ALL_FILES[calculation]})'
     cmd += f'''
 mkdir qm_all
 mv !(qm_all) qm_all/
+
+cp qm_all/{output_file} ./
 
 for i in ${"{ext[@]}"}; do 
     echo {input_file_no_extention}.$i
@@ -39,9 +41,6 @@ for i in ${"{ext[@]}"}; do
     fi
 done
 '''
-    if calculation in ['crest', 'xtb', 'censo', 'enan']:
-        cmd += "cp qm_all/*out ./ \n"
-        
     return cmd 
 
 
@@ -95,7 +94,7 @@ def write_job_file(input_file, calculation, calc_cmd, slurm_cmd, command_1=None,
             calculation = calculation, 
             launcher = LAUNCHERS[calculation],
             command_line_no_prog = cmd_not_prog, 
-            creating_qm_all = create_qm_all(calculation, input_file_no_extention), 
+            creating_qm_all = create_qm_all(calculation, input_file_no_extention, output_file), 
             update_README = f'update_readme.py {calculation} {output_file}',
             SMTP = SMTP_SERVER_IP, 
             email = email_address,
