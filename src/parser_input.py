@@ -55,7 +55,7 @@ def read_sbatchrc():
     else: 
         fl = """#SBATCH --mail-user=AP_tgram@mailrise.xyz
 #SBATCH --mail-type=NONE
-#SBATCH --exclude=motoro"""
+#SBATCH --exclude=node6"""
         sbatchrc = [i.split()[1] for i in fl.splitlines()]   
 
     slurm_commands = {i.split('=')[0].strip('-'):i.split('=')[1] for i in sbatchrc}
