@@ -30,7 +30,7 @@ def create_qm_all(calculation, input_file_no_extention, output_file):
     cmd = f'ext=({QM_ALL_FILES[calculation]})'
     cmd += f'''
 mkdir qm_all
-mv !(qm_all) qm_all/
+mv ./* qm_all/
 
 cp qm_all/{output_file} ./
 
