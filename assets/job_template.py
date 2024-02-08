@@ -56,7 +56,7 @@ if [[ -e .censorc ]]; then cp .censorc .originals; fi
 
 
 echo "scp $SLURMD_NODENAME:$SCRATCH_DIR/{output_file} $SLURM_SUBMIT_DIR" > $SLURM_SUBMIT_DIR/update
-echo "ssh $SLURMD_NODENAME tail -f -n 1000 $SCRATCH_DIR/{output_file} $SLURM_SUBMIT_DIR" > $SLURM_SUBMIT_DIR/live
+echo "ssh $SLURMD_NODENAME tail -f -n 1000 $SCRATCH_DIR/{output_file}" > $SLURM_SUBMIT_DIR/live
 chmod u+x $SLURM_SUBMIT_DIR/update $SLURM_SUBMIT_DIR/live
 
 cd $SCRATCH_DIR
