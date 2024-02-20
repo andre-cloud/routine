@@ -89,7 +89,7 @@ OUTPUT_FILE = {
     'enan'      : 'output.out',
 }
 
-SMTP_SERVER_IP = '10.147.18.66:8025'
+SMTP_SERVER_IP = 'mailrise.synlab.navile'
 DEFAULT_MAIL='AP_tgram@mailrise.xyz,PR_tgram@mailrise.xyz'
 
 
