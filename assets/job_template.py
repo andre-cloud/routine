@@ -82,8 +82,6 @@ rm *.slurm *.sh
 cd $SLURM_SUBMIT_DIR
 rsync -av --no-p --no-g --chmod=ugo=rwX --exclude '*.tmp' $SCRATCH_DIR/* ./ && rm -fr $SCRATCH_DIR
 
-rm WD
-
 {update_README}
 
 # SEND NOTIFICATION EMAIL
