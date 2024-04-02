@@ -36,7 +36,7 @@ def get_molcals_prm(input, calc_commands):
         fl = f.read().lower()
     
     pal = re.search('MOLCAS_NPROCS[ ]{0,}=[ ]{0,}[1-9]{0,}', fl)
-    pal = re.search('[0-9]{0,2}', pal[0])[0]
+    pal = re.search('[0-9]{0,}', pal[0])[0]
 
     maxcore = re.search('MOLCAS_MEM[ ]{0,}=[ ]{0,}[0-9]{1,}', fl)
     if maxcore:
