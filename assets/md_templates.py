@@ -49,3 +49,8 @@ enan_template = common_template + '''
 ---
 {parsed_input}
 ''' + note_template
+
+molcas_template = common_template + '''
+---
+{parsed_input}
+''' + note_template

@@ -62,6 +62,7 @@ chmod u+x $SLURM_SUBMIT_DIR/update $SLURM_SUBMIT_DIR/live
 cd $SCRATCH_DIR
 rm README.md
 
+{molcas_scratch}
 
 ## ECHOING THE ID IN THE RUNNING LOG FILE
 

@@ -2,7 +2,7 @@
 
 import os, re
 
-from assets.md_templates import orca_template, crest_template, censo_template, xtb_template, gaussian_template, enan_template
+from assets.md_templates import orca_template, crest_template, censo_template, xtb_template, gaussian_template, enan_template, molcas_template
 from assets.phrases import phrases
 
 
@@ -105,6 +105,11 @@ def enan_parser(input_file, cmd_line):
     return '', ''
 
 
+def molcas_parser(input_file, cmd_line):
+
+    return '', ''
+
+
 
 template = {
     'orca'     : orca_template,
@@ -113,6 +118,7 @@ template = {
     'xtb'      : xtb_template,
     'gaussian' : gaussian_template,
     'enan'     : enan_template,
+    'molcas'     : molcas_template,
 }
 
 parser = {
@@ -122,6 +128,7 @@ parser = {
     'xtb'      : xtb_parser,
     'gaussian' : gaussian_parser,
     'enan'     : enan_parser,
+    'molcas'     : molcas_parser,
 }
 
 

@@ -30,6 +30,22 @@ def get_orca_prm(input, calc_commands):
 
     return pal, maxcore
 
+def get_molcals_prm(input, calc_commands):
+
+    with open(input) as f:
+        fl = f.read().lower()
+    
+    pal = re.search('MOLCAS_NPROCS[ ]{0,}=[ ]{0,}[1-9]{0,}', fl)
+    pal = re.search('[0-9]{0,2}', pal[0])[0]
+
+    maxcore = re.search('MOLCAS_MEM[ ]{0,}=[ ]{0,}[0-9]{1,}', fl)
+    if maxcore:
+        maxcore = re.search('[0-9]{0,}', maxcore[0])[0]
+    else: 
+        maxcore = "1000"
+
+    return pal, maxcore
+
 
 def get_gaussian_prm(input, calc_commands):
 

@@ -39,6 +39,7 @@ POSS_CALC = [
     'xtb', 
     'gaussian', 
     'enan',
+    'molcas',
 ]
 
 CALC_ABBREVIATION = {
@@ -48,6 +49,7 @@ CALC_ABBREVIATION = {
     'xtb'       : 'x', 
     'gaussian'  : 'g',
     'enan'      : 'p',
+    'molcas'    : 'm',
 }
 
 
@@ -58,6 +60,7 @@ MODULE_NEEDED = {
     'xtb'       : 'xtb',
     'gaussian'  : 'gaussian', 
     'enan'      : 'orca',
+    'molcas'    : 'openmolcas',
 }
 
 LAUNCHERS = {
@@ -66,7 +69,8 @@ LAUNCHERS = {
     'censo'     : 'censo --input',
     'xtb'       : 'xtb',
     'gaussian'  : 'g16',
-    'enan'      : 'ensemble_analyser.py -e'
+    'enan'      : 'ensemble_analyser.py -e',
+    'molcas'    : 'pymolcas',
 }
 
 
@@ -77,6 +81,7 @@ QM_ALL_FILES = {
     'xtb'       : 'xyz out',
     'gaussian'  : 'gjf out log',
     'enan'      : 'xyz json',
+    'molcas'    : 'xyz molden out',
 }
 
 
@@ -87,6 +92,7 @@ OUTPUT_FILE = {
     'xtb'       : 'xtb.out',
     'gaussian'  : '{input}.log',
     'enan'      : 'output.out',
+    'molcas'    : '{input}.out',
 }
 
 SMTP_SERVER_IP = '137.204.158.6:8025'

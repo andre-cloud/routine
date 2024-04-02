@@ -99,6 +99,7 @@ def write_job_file(input_file, calculation, calc_cmd, slurm_cmd, command_1=None,
             SMTP = SMTP_SERVER_IP, 
             email = email_address,
             censorc = '' if calculation != 'censo' else censorc(),
+            molcas_scratch = '' if calculation != 'molcas' else "WorkDir=$SCRATCH_DIR", #\nScratch=$SCRATCH_DIR",
             command_1 = "" if not command_1 else command_1,
             command_2 = "" if not command_2 else command_2,
         ))

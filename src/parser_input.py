@@ -6,7 +6,7 @@ import getpass
 
 
 from src.defaults import POSS_CALC
-from src.cpu_memory import get_censo_prm, get_crest_prm, get_gaussian_prm, get_orca_prm, get_xtb_prm, get_enan_prm
+from src.cpu_memory import get_censo_prm, get_crest_prm, get_gaussian_prm, get_orca_prm, get_xtb_prm, get_enan_prm, get_molcals_prm
 
 
 
@@ -76,7 +76,8 @@ def get_cpu_memory(input, calculation, calc_commands):
         'censo'     : get_censo_prm,
         'xtb'       : get_xtb_prm,
         'gaussian'  : get_gaussian_prm,
-        'enan'      : get_enan_prm
+        'enan'      : get_enan_prm,
+        'molcas'    : get_molcals_prm,
     }[calculation](input, calc_commands)
 
 
