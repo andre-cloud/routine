@@ -68,9 +68,9 @@ def write_job_file(input_file, calculation, calc_cmd, slurm_cmd, command_1=None,
     output_file = OUTPUT_FILE[calculation].format(input=input_file_no_extention)
 
     # defining the command line to run the code
-    if calculation in ['orca',]:
+    if calculation in ['orca','molcas']:
         cm = calc_cmd + f' > {output_file}'
-    elif calculation in ['gaussian', 'molcas']:
+    elif calculation in ['gaussian']:
         cm = calc_cmd
     elif calculation in ['crest', 'censo', 'xtb']:
         cm = calc_cmd + f' > {output_file} 2> {calculation}.error'
