@@ -127,6 +127,11 @@ def gaussian_parser(output):
 
     return text
 
+def molcas_parser(output):
+
+    text = '-'*20 + '\nCALCULATION ENDED\n'+'-'*20
+
+    return text
 
 parser = {
     'orca'     : orca_parser,
@@ -135,6 +140,7 @@ parser = {
     'xtb'      : xtb_parser,
     'gaussian' : gaussian_parser,
     'enan'     : enan_parser,
+    'molcas'   : molcas_parser,
 }
 
 
