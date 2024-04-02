@@ -3,7 +3,7 @@
 
 import re, os
 
-from src.defaults import PREFIX
+# from src.defaults import PREFIX
 
 def get_orca_prm(input, calc_commands):
 
@@ -33,14 +33,14 @@ def get_orca_prm(input, calc_commands):
 def get_molcals_prm(input, calc_commands):
 
     with open(input) as f:
-        fl = f.read().lower()
+        fl = f.read().upper()
     
     pal = re.search('MOLCAS_NPROCS[ ]{0,}=[ ]{0,}[1-9]{0,}', fl)
-    pal = re.search('[0-9]{0,}', pal[0])[0]
+    pal = re.search('[0-9]{1,}', pal[0])[0]
 
     maxcore = re.search('MOLCAS_MEM[ ]{0,}=[ ]{0,}[0-9]{1,}', fl)
     if maxcore:
-        maxcore = re.search('[0-9]{0,}', maxcore[0])[0]
+        maxcore = re.search('[0-9]{1,}', maxcore[0])[0]
     else: 
         maxcore = "1000"
 
@@ -129,13 +129,15 @@ def get_enan_prm(input, calc_commands):
 
 
 if __name__ == '__main__':
-    print(get_orca_prm('tests/orca_pal.inp', None))
-    print(get_orca_prm('tests/orca_procs.inp', None))
+    # print(get_orca_prm('tests/orca_pal.inp', None))
+    # print(get_orca_prm('tests/orca_procs.inp', None))
     
-    print(get_gaussian_prm('tests/gaussian.gjf', None))
+    # print(get_gaussian_prm('tests/gaussian.gjf', None))
 
-    print(get_crest_prm(None, '--nci --T 44 --cluster 30 --alpb toluene'))
-    print(get_xtb_prm(None, '--opt -P 4 --input input'))
+    # print(get_crest_prm(None, '--nci --T 44 --cluster 30 --alpb toluene'))
+    # print(get_xtb_prm(None, '--opt -P 4 --input input'))
 
-    print(get_censo_prm(None, '-inp ensemble.xyz -solvent toluene', True))
-    print(get_enan_prm(None, 'ensemble.xyz -cpu  44 -p protocol.json -o $SLURM_SUBMIT_DIR/output.out'))
+    # print(get_censo_prm(None, '-inp ensemble.xyz -solvent toluene', True))
+    # print(get_enan_prm(None, 'ensemble.xyz -cpu  44 -p protocol.json -o $SLURM_SUBMIT_DIR/output.out'))
+
+    print(get_molcals_prm('tests/molcas.inp', None))
