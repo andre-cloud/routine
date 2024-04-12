@@ -83,6 +83,7 @@ def write_job_file(input_file, calculation, calc_cmd, slurm_cmd, command_1=None,
 
     with open('job-slurm.sh', 'w') as f:
         f.write(job_template.format(
+            cpu = slurm_cmd['ntasks'],
             abr = CALC_ABBREVIATION[calculation],
             slurm_sbatchrc = convert_slurm_cmd(slurm_cmd),
             modules = MODULE_NEEDED[calculation],

@@ -12,6 +12,12 @@ template = '''#!/bin/bash
 module load {modules}{ver}
 SCRATCH_DIR="/scratch/slurm-$SLURM_JOB_ID"
 
+export OMP_NUM_THREADS={cpu}
+export MKL_NUM_THREADS={cpu}
+
+ulimit -s unlimited
+export OMP_STACKSIZE=32G
+
 echo "Job execution cmd:   {command_line}"
 echo "Job execution start: {date}"
 echo "Slurm Job ID is:     $SLURM_JOB_ID"
