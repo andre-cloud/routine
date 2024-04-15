@@ -51,7 +51,7 @@ source /data/bin/python_env/bin/activate
 
 ## CREATE THE ORIGINAL'S FOLDER
 mkdir .originals
-cp * .originals
+cp -r * .originals
 rm .originals/README.md .originals/*slurm .originals/*sh
 
 
