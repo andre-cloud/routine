@@ -1,9 +1,7 @@
 #!/data/bin/python_env/bin/python
 
-
 import re, os
-
-# from src.defaults import PREFIX
+from src.defaults import PREFIX
 
 def get_orca_prm(input, calc_commands):
 
