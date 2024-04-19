@@ -70,7 +70,7 @@ LAUNCHERS = {
     'xtb'       : 'xtb',
     'gaussian'  : 'g16',
     'enan'      : 'ensemble_analyser.py -e',
-    'molcas'    : 'molcas',
+    'molcas'    : 'pymolcas',
 }
 
 
