@@ -81,6 +81,9 @@ def write_job_file(input_file, calculation, calc_cmd, slurm_cmd, command_1=None,
     cmd_not_prog = ' '.join(cm.split()[1:])
 
 
+    if calculation == 'molcas':
+        command_2 = "rm -rf tmp_*"
+
     with open('job-slurm.sh', 'w') as f:
         f.write(job_template.format(
             cpu = slurm_cmd['ntasks'],

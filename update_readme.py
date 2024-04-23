@@ -129,7 +129,13 @@ def gaussian_parser(output):
 
 def molcas_parser(output):
 
-    text = '-'*20 + '\nCALCULATION ENDED\n'+'-'*20
+    with open(output) as f:
+        fl = f.read()
+
+    if "Happy landing!" in fl:
+        text = '-'*20 + '\nCALCULATION COMPLETED CORRECLY\n' + '-'*20
+
+    text = '-'*20 + '\nCALCULATION ABORTED\n'+'-'*20
 
     return text
 
